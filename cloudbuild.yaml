@@ -1,7 +1,8 @@
 steps:
 
 - name: 'registry.hub.docker.com/devlite/buildserver:2.0'
-  args: ['git', 'clone','${_GIT_HUB_URL}','${_GIT_BRANCH_NAME}']
+  args: ['git', 'clone','${_GIT_HUB_URL}','-b','${_GIT_BRANCH_NAME}']
+  args: ['/usr/share/maven/bin/mvn','clean package']
 - name: 'registry.hub.docker.com/devlite/buildserver:2.0'
   args: ['/usr/share/maven/bin/mvn', 'clean package']
         #- name: 'gcr.io/cloud-builders/mvn'
